@@ -1,7 +1,7 @@
-﻿using Orders.Contracts.Clients;
+﻿using BackOffice.Contracts.Clients;
 using System.Net.Http.Json;
 
-namespace Orders.Infrastructure.Clients
+namespace BackOffice.Infrastructure.Clients
 {
     public class HttpUsersServiceClient : IUsersServiceClient
     {
@@ -12,10 +12,10 @@ namespace Orders.Infrastructure.Clients
             this._httpClient = httpClient;
         }
 
-        public async Task<AccountDto> GetAccountById(string accountId)
+        public async Task<IEnumerable<AccountDto>> GetAllAccounts()
         {
-            var accountDto = await _httpClient.GetFromJsonAsync<AccountDto>($"api/accounts/{accountId}");
-            return accountDto;
+            var accountDtos = await _httpClient.GetFromJsonAsync<IEnumerable<AccountDto>>($"api/accounts");
+            return accountDtos;
         }
     }
 }

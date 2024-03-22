@@ -23,17 +23,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{835E181C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddressBook", "AddressBook", "{D420C7CA-8135-49A7-90F1-19BAC45C8DF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.WebApi", "Users.WebApi\Users.WebApi.csproj", "{83528AA3-AFCA-4628-857F-949203DC4861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Users.WebApi", "Users.WebApi\Users.WebApi.csproj", "{83528AA3-AFCA-4628-857F-949203DC4861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.Contracts", "Users.Contracts\Users.Contracts.csproj", "{DB86B4C6-F22F-4D8B-92B8-3576FAA6EFCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Users.Contracts", "Users.Contracts\Users.Contracts.csproj", "{DB86B4C6-F22F-4D8B-92B8-3576FAA6EFCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.Infrastructure", "Users.Infrastructure\Users.Infrastructure.csproj", "{E365BC0E-4C1E-4D27-826B-93D3725E5911}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Users.Infrastructure", "Users.Infrastructure\Users.Infrastructure.csproj", "{E365BC0E-4C1E-4D27-826B-93D3725E5911}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook.WebApi", "AddressBook.WebApi\AddressBook.WebApi.csproj", "{D1A55982-5AC0-494A-BB87-1DF291EC4957}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBook.WebApi", "AddressBook.WebApi\AddressBook.WebApi.csproj", "{D1A55982-5AC0-494A-BB87-1DF291EC4957}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook.Contracts", "AddressBook.Contracts\AddressBook.Contracts.csproj", "{4BDE5069-D4A9-4A24-BC50-A9EE438CEE41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBook.Contracts", "AddressBook.Contracts\AddressBook.Contracts.csproj", "{4BDE5069-D4A9-4A24-BC50-A9EE438CEE41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook.Infrastructure", "AddressBook.Infrastructure\AddressBook.Infrastructure.csproj", "{14D1004F-578A-43D8-BBB3-C276B14629EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddressBook.Infrastructure", "AddressBook.Infrastructure\AddressBook.Infrastructure.csproj", "{14D1004F-578A-43D8-BBB3-C276B14629EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackOffice", "BackOffice", "{8E1CE576-C6A9-4428-800F-8A06371DB9E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.WebApi", "BackOffice.WebApi\BackOffice.WebApi.csproj", "{4D21E406-C125-43F6-B14F-0024E1719D9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.Contracts", "BackOffice.Contracts\BackOffice.Contracts.csproj", "{A72B5102-44DD-4F88-8D3A-C0D34BEF2EA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice.Infrastructure", "BackOffice.Infrastructure\BackOffice.Infrastructure.csproj", "{596E5573-7E6B-45A1-95FF-A1E2D3A53421}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +97,18 @@ Global
 		{14D1004F-578A-43D8-BBB3-C276B14629EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D1004F-578A-43D8-BBB3-C276B14629EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14D1004F-578A-43D8-BBB3-C276B14629EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D21E406-C125-43F6-B14F-0024E1719D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D21E406-C125-43F6-B14F-0024E1719D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D21E406-C125-43F6-B14F-0024E1719D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D21E406-C125-43F6-B14F-0024E1719D9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A72B5102-44DD-4F88-8D3A-C0D34BEF2EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A72B5102-44DD-4F88-8D3A-C0D34BEF2EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A72B5102-44DD-4F88-8D3A-C0D34BEF2EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A72B5102-44DD-4F88-8D3A-C0D34BEF2EA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{596E5573-7E6B-45A1-95FF-A1E2D3A53421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596E5573-7E6B-45A1-95FF-A1E2D3A53421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596E5573-7E6B-45A1-95FF-A1E2D3A53421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596E5573-7E6B-45A1-95FF-A1E2D3A53421}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +126,9 @@ Global
 		{D1A55982-5AC0-494A-BB87-1DF291EC4957} = {D420C7CA-8135-49A7-90F1-19BAC45C8DF2}
 		{4BDE5069-D4A9-4A24-BC50-A9EE438CEE41} = {D420C7CA-8135-49A7-90F1-19BAC45C8DF2}
 		{14D1004F-578A-43D8-BBB3-C276B14629EE} = {D420C7CA-8135-49A7-90F1-19BAC45C8DF2}
+		{4D21E406-C125-43F6-B14F-0024E1719D9D} = {8E1CE576-C6A9-4428-800F-8A06371DB9E7}
+		{A72B5102-44DD-4F88-8D3A-C0D34BEF2EA0} = {8E1CE576-C6A9-4428-800F-8A06371DB9E7}
+		{596E5573-7E6B-45A1-95FF-A1E2D3A53421} = {8E1CE576-C6A9-4428-800F-8A06371DB9E7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A69CFC4C-69F4-40D9-9563-52E0C2E587B6}

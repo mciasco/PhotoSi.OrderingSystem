@@ -24,6 +24,7 @@ builder.Services.AddScoped<IAddressesRepository, EFCoreAddressesRepository>();
 
 // command handlers
 builder.Services.AddScoped<GetAllAddressesCommandHandler>();
+builder.Services.AddScoped<GetAddressesByAccountIdCommandHandler>();
 
 
 var app = builder.Build();

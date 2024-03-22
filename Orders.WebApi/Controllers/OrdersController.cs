@@ -42,18 +42,7 @@ namespace Orders.WebApi.Controllers
             [FromBody] CreateNewOrderDto createNewOrderDto,
             [FromServices] CreateNewOrderCommandHandler commandHandler)
         {
-            var cmdInput = new CreateNewOrderCommandInput();
-            cmdInput.Description = createNewOrderDto.Description;
-            cmdInput.ProductItems = new List<CreateNewOrderProductItem>();
-            if (createNewOrderDto.ProductItems != null && createNewOrderDto.ProductItems.Any())
-            {
-                cmdInput.ProductItems.AddRange(createNewOrderDto.ProductItems.Select(pi => new CreateNewOrderProductItem()
-                {
-                    ProductId = pi.ProductId,
-                    Quantity = pi.Quantity,
-                }));
-            }
-
+            var cmdInput = createNewOrderDto.ToCommandInput();
             var newOrder = await commandHandler.Execute(cmdInput);
 
             return Ok(newOrder.ToOrderDto());

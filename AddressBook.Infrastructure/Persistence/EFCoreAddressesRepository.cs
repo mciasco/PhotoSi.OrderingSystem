@@ -13,6 +13,14 @@ namespace AddressBook.Infrastructure.Persistence
             this._dbContext = dbContext;
         }
 
+        public async Task<IEnumerable<Address>> GetAddressesByAccountId(string input)
+        {
+            return await _dbContext
+                .Addresses
+                .Where(adr => adr.OwnerAccountId == input)
+                .ToArrayAsync();
+        }
+
         public async Task<IEnumerable<Address>> GetAllAddresses()
         {
             return await _dbContext

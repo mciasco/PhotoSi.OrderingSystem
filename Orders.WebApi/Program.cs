@@ -35,11 +35,25 @@ builder.Services.AddScoped<CreateNewOrderCommandHandler>();
 
 // configuration
 builder.Services.Configure<ProductsServiceSettings>(builder.Configuration.GetSection("Clients:ProductsServiceSettings"));
+builder.Services.Configure<AddressBookServiceSettings>(builder.Configuration.GetSection("Clients:AddressBookServiceSettings"));
+builder.Services.Configure<UsersServiceSettings>(builder.Configuration.GetSection("Clients:UsersServiceSettings"));
 
 // http clients
 builder.Services.AddHttpClient<IProductsServiceClient, HttpProductsServiceClient>((serviceProvider, client) =>
 {
     var settings = serviceProvider.GetRequiredService<IOptions<ProductsServiceSettings>>();
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+    client.BaseAddress = new Uri(settings.Value.BaseUrl);
+});
+builder.Services.AddHttpClient<IAddressBookServiceClient, HttpAddressBookServiceClient>((serviceProvider, client) =>
+{
+    var settings = serviceProvider.GetRequiredService<IOptions<AddressBookServiceSettings>>();
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+    client.BaseAddress = new Uri(settings.Value.BaseUrl);
+});
+builder.Services.AddHttpClient<IUsersServiceClient, HttpUsersServiceClient>((serviceProvider, client) =>
+{
+    var settings = serviceProvider.GetRequiredService<IOptions<UsersServiceSettings>>();
     client.DefaultRequestHeaders.Add("Accept", "application/json");
     client.BaseAddress = new Uri(settings.Value.BaseUrl);
 });

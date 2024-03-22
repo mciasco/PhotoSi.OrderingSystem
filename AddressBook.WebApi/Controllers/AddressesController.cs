@@ -22,5 +22,14 @@ namespace AddressBook.WebApi.Controllers
             var addresses = await commandHandler.Execute();
             return Ok(addresses.Select(a => a.ToAccountDto()));
         }
+
+        [HttpGet("accounts/{accountId}", Name = "GetAddressesByAccountId")]
+        public async Task<ActionResult<IEnumerable<AddressDto>>> GetAddressesByAccountId(
+            [FromRoute] string accountId,
+            [FromServices] GetAddressesByAccountIdCommandHandler commandHandler)
+        {
+            var addresses = await commandHandler.Execute(accountId);
+            return Ok(addresses.Select(a => a.ToAccountDto()));
+        }
     }
 }

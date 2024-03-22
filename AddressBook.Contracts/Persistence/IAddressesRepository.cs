@@ -4,6 +4,7 @@ namespace AddressBook.Contracts.Persistence
 {
     public interface IAddressesRepository
     {
+        Task<IEnumerable<Address>> GetAddressesByAccountId(string input);
         Task<IEnumerable<Address>> GetAllAddresses();
     }
 }

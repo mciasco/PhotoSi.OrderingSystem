@@ -1,4 +1,7 @@
 ﻿
+using BackOffice.WebApi.Application;
+using BackOffice.WebApi.Models;
+
 namespace BackOffice.WebApi.Controllers
 {
     public static class ControllersHelpers
@@ -53,6 +56,19 @@ namespace BackOffice.WebApi.Controllers
                 Name = category.Name,
                 Description = category.Description,
             };
+        }
+
+
+        public static CreateProductCommandInput ToCommandInput(this CreateProductDto inputDto)
+        {
+            var cmdInput = new CreateProductCommandInput();
+            cmdInput.Name = inputDto.Name;
+            cmdInput.Description = inputDto.Description;
+            cmdInput.CategoryName = inputDto.CategoryName;
+            cmdInput.QtyStock = inputDto.QtyStock;
+            cmdInput.Price = inputDto.Price;
+
+            return cmdInput;
         }
     }
 }

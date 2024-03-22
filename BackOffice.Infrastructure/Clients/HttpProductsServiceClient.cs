@@ -17,6 +17,19 @@ namespace BackOffice.Infrastructure.Clients
             this._httpClient = httpClient;
         }
 
+        public async Task<ProductDto> CreateNewProduct(CreateNewProductDto createNewProductDto)
+        {
+            var response = await _httpClient.PostAsJsonAsync<CreateNewProductDto>($"api/products", createNewProductDto);
+            var productDto = await response.Content.ReadFromJsonAsync<ProductDto>();
+            return productDto;
+        }
+
+        public async Task<string> DeleteProductById(string input)
+        {
+            var response = await _httpClient.DeleteAsync($"products/{input}");
+            return await response.Content.ReadAsStringAsync();
+        }
+
         public async Task<IEnumerable<CategoryDto>> GetAllCategories()
         {
             var categoryDtos = await _httpClient.GetFromJsonAsync<IEnumerable<CategoryDto>>($"api/categories");

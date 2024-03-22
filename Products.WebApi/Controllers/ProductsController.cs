@@ -46,5 +46,16 @@ namespace Products.WebApi.Controllers
 
             return Ok(products.Select(p => p.ToProductDto()));
         }
+
+
+        [HttpPost(Name = "CreateNewProduct")]
+        public async Task<ActionResult<IEnumerable<ProductDto>>> CreateNewProduct(
+            [FromBody] CreateNewProductDto createNewProductDto,
+            [FromServices] CreateNewProductCommandHandler commandHandler)
+        {
+            var cmdInput = createNewProductDto.ToCommandInput();
+            var newProduct = await commandHandler.Execute(cmdInput);
+            return Ok(newProduct.ToProductDto());
+        }
     }
 }

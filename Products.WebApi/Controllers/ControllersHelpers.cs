@@ -1,4 +1,5 @@
 ﻿using Products.Contracts.Domain;
+using Products.WebApi.Application;
 using Products.WebApi.Models;
 
 namespace Products.WebApi.Controllers
@@ -27,5 +28,17 @@ namespace Products.WebApi.Controllers
             };
         }
 
+
+        public static CreateNewProductCommandInput ToCommandInput(this CreateNewProductDto inputDto)
+        {
+            var cmdInput = new CreateNewProductCommandInput();
+            cmdInput.Name = inputDto.Name;
+            cmdInput.Description = inputDto.Description;
+            cmdInput.CategoryName = inputDto.CategoryName;
+            cmdInput.QtyStock = inputDto.QtyStock;
+            cmdInput.Price = inputDto.Price;
+                        
+            return cmdInput;
+        }
     }
 }

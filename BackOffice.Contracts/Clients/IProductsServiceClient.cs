@@ -10,11 +10,23 @@ namespace BackOffice.Contracts.Clients
     {
         Task<IEnumerable<ProductDto>> GetAllProducts();
         Task<IEnumerable<CategoryDto>> GetAllCategories();
+        Task<ProductDto> CreateNewProduct(CreateNewProductDto createNewProductDto);
+        Task<string> DeleteProductById(string input);
     }
     
     public class ProductDto
     {
         public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string CategoryName { get; set; }
+        public int QtyStock { get; set; }
+        public decimal Price { get; set; }
+    }
+
+
+    public class CreateNewProductDto
+    {
         public string Name { get; set; }
         public string Description { get; set; }
         public string CategoryName { get; set; }

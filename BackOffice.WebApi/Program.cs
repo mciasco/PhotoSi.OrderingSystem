@@ -46,6 +46,8 @@ builder.Services.AddScoped<GetAllAccountsCommandHandler>();
 builder.Services.AddScoped<GetAllAddressesCommandHandler>();
 builder.Services.AddScoped<GetAllProductsCommandHandler>();
 builder.Services.AddScoped<GetAllCategoriesCommandHandler>();
+builder.Services.AddScoped<CreateProductCommandHandler>();
+builder.Services.AddScoped<DeleteProductCommandHandler>();
 
 
 var app = builder.Build();

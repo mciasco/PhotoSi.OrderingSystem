@@ -28,6 +28,8 @@ builder.Services.AddScoped<GetAllProductsCommandHandler>();
 builder.Services.AddScoped<GetAllCategoriesCommandHandler>();
 builder.Services.AddScoped<GetProductsByCategoryCommandHandler>();
 builder.Services.AddScoped<GetProductByIdCommandHandler>();
+builder.Services.AddScoped<GetProductsByCategoryCommandHandler>();
+builder.Services.AddScoped<CreateNewProductCommandHandler>();
 
 
 var app = builder.Build();

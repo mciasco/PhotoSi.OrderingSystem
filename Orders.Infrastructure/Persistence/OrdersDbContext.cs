@@ -24,6 +24,8 @@ namespace Orders.Infrastructure.Persistence
                 o.Property(x => x.Id).HasColumnName("Id").IsRequired(true);
                 o.Property(x => x.Description).HasColumnName("Description").IsRequired(false);
                 o.Property(x => x.CreatedAt).HasColumnName("CreatedAt").IsRequired(true);
+                o.Property(x => x.CustomerAccountId).HasColumnName("CustomerAccountId").IsRequired(true);
+                o.Property(x => x.ShippingAddressId).HasColumnName("ShippingAddressId").IsRequired(true);
             });
 
             modelBuilder.Entity<OrderedProduct>(op =>

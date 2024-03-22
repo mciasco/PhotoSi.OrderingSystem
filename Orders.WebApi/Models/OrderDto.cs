@@ -12,5 +12,7 @@
 
         public List<string> ProductIds { get; set; }
         public decimal TotalPrice { get; set; }
+        public string CustomerAccountId { get; internal set; }
+        public string ShippingAddressId { get; internal set; }
     }
 }

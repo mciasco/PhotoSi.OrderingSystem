@@ -11,7 +11,11 @@ namespace Orders.Contracts.Domain
     {
         protected Order() { }
 
-        public static Order Create(string description, List<OrderedProduct> orderedProducts)
+        public static Order Create(
+            string description, 
+            List<OrderedProduct> orderedProducts,
+            string customerAccountId,
+            string shippingAddressId)
         {
             var now = DateTime.UtcNow;
             var newOrder = new Order()
@@ -20,6 +24,8 @@ namespace Orders.Contracts.Domain
                 Description = description,
                 CreatedAt = now,
                 OrderedProducts = new List<OrderedProduct>(),
+                CustomerAccountId = customerAccountId,
+                ShippingAddressId = shippingAddressId
             };
 
             foreach (var product in orderedProducts)
@@ -35,6 +41,8 @@ namespace Orders.Contracts.Domain
         public string Id { get; set; }
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string CustomerAccountId { get; set; }
+        public string ShippingAddressId { get; set; }
 
         public virtual ICollection<OrderedProduct> OrderedProducts { get; set; }
     }

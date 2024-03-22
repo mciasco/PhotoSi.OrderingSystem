@@ -13,6 +13,8 @@ namespace Orders.WebApi.Controllers
                 Id = order.Id,
                 Description = order.Description,
                 CreatedAt = order.CreatedAt,
+                CustomerAccountId = order.CustomerAccountId,
+                ShippingAddressId = order.ShippingAddressId,
                 ProductIds = order.OrderedProducts.Select(op => op.ProductId).ToList(),
                 TotalPrice = order.OrderedProducts.Sum(op => op.Price * op.Qty),
             };

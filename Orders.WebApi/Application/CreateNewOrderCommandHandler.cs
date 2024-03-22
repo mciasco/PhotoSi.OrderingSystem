@@ -70,11 +70,16 @@ namespace Orders.WebApi.Application
             if(selectedAddressDto is null)
                 throw new ArgumentException($"No corresponding shipping address with ID '{input.ShippingAddressId}' associated to account with ID '{input.CustomerAccountId}'");
 
+            // crea nuova entita' Order
+            var newOrder = Order.Create(
+                input.Description, 
+                listOfOrderedProducts, 
+                input.CustomerAccountId, 
+                input.ShippingAddressId);
 
-            var newOrder = Order.Create(input.Description, listOfOrderedProducts);
-            //await _ordersRepository.AddOrder(newOrder);
-
-            //await _unitOfWork.SaveChangesAsync();
+            // salva su DB
+            await _ordersRepository.AddOrder(newOrder);
+            await _unitOfWork.SaveChangesAsync();
 
             return newOrder;
         }

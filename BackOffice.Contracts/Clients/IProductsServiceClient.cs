@@ -8,13 +8,13 @@ namespace BackOffice.Contracts.Clients
 {
     public interface IProductsServiceClient
     {
-        Task<IEnumerable<ProductDto>> GetAllProducts();
-        Task<IEnumerable<CategoryDto>> GetAllCategories();
-        Task<ProductDto> CreateNewProduct(CreateNewProductDto createNewProductDto);
+        Task<IEnumerable<ProductClientDto>> GetAllProducts();
+        Task<IEnumerable<CategoryClientDto>> GetAllCategories();
+        Task<ProductClientDto> CreateNewProduct(CreateNewProductClientDto createNewProductDto);
         Task<string> DeleteProductById(string input);
     }
     
-    public class ProductDto
+    public class ProductClientDto
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -25,7 +25,7 @@ namespace BackOffice.Contracts.Clients
     }
 
 
-    public class CreateNewProductDto
+    public class CreateNewProductClientDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -34,7 +34,7 @@ namespace BackOffice.Contracts.Clients
         public decimal Price { get; set; }
     }
 
-    public class CategoryDto
+    public class CategoryClientDto
     {
         public string Name { get; set; }
         public string Description { get; set; }

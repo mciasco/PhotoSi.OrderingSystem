@@ -6,9 +6,9 @@ namespace Products.WebApi.Controllers
 {
     public static class ControllersHelpers
     {
-        public static ProductDto ToProductDto(this Product product)
+        public static ProductApiDto ToApiDto(this Product product)
         {
-            return new ProductDto()
+            return new ProductApiDto()
             {
                 Id = product.Id,
                 Description = product.Description,
@@ -19,9 +19,9 @@ namespace Products.WebApi.Controllers
             };
         }
 
-        public static CategoryDto ToCategoryDto(this Category category)
+        public static CategoryApiDto ToApiDto(this Category category)
         {
-            return new CategoryDto()
+            return new CategoryApiDto()
             {
                 Name = category.Name,
                 Description = category.Description,
@@ -29,7 +29,7 @@ namespace Products.WebApi.Controllers
         }
 
 
-        public static CreateNewProductCommandInput ToCommandInput(this CreateNewProductDto inputDto)
+        public static CreateNewProductCommandInput ToCommandInput(this CreateNewProductApiDto inputDto)
         {
             var cmdInput = new CreateNewProductCommandInput();
             cmdInput.Name = inputDto.Name;

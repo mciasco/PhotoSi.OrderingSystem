@@ -6,9 +6,9 @@ namespace Orders.WebApi.Controllers
 {
     public static class ControllerHelpers
     {
-        public static OrderDto ToOrderDto(this Order order)
+        public static OrderApiDto ToApiDto(this Order order)
         {
-            return new OrderDto()
+            return new OrderApiDto()
             {
                 Id = order.Id,
                 Description = order.Description,
@@ -21,7 +21,7 @@ namespace Orders.WebApi.Controllers
         }
 
 
-        public static CreateNewOrderCommandInput ToCommandInput(this CreateNewOrderDto inputDto)
+        public static CreateNewOrderCommandInput ToCommandInput(this CreateNewOrderApiDto inputDto)
         {
             var cmdInput = new CreateNewOrderCommandInput();
             cmdInput.Description = inputDto.Description;

@@ -2,7 +2,7 @@
 
 namespace BackOffice.WebApi.Application
 {
-    public class GetAllProductsCommandHandler : BaseCommandHandlerNoInputWithOutput<IEnumerable<ProductDto>>
+    public class GetAllProductsCommandHandler : BaseCommandHandlerNoInputWithOutput<IEnumerable<ProductClientDto>>
     {
         private readonly IProductsServiceClient _productsServiceClient;
 
@@ -11,7 +11,7 @@ namespace BackOffice.WebApi.Application
             this._productsServiceClient = productsServiceClient;
         }
 
-        public override async Task<IEnumerable<ProductDto>> Execute()
+        public override async Task<IEnumerable<ProductClientDto>> Execute()
         {
             return await _productsServiceClient.GetAllProducts();
         }

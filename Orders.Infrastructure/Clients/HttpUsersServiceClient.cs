@@ -12,9 +12,9 @@ namespace Orders.Infrastructure.Clients
             this._httpClient = httpClient;
         }
 
-        public async Task<AccountDto> GetAccountById(string accountId)
+        public async Task<AccountClientDto> GetAccountById(string accountId)
         {
-            var accountDto = await _httpClient.GetFromJsonAsync<AccountDto>($"api/accounts/{accountId}");
+            var accountDto = await _httpClient.GetFromJsonAsync<AccountClientDto>($"api/accounts/{accountId}");
             return accountDto;
         }
     }

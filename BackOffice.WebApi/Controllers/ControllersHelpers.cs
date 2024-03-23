@@ -1,4 +1,5 @@
 ﻿
+using BackOffice.Contracts.Clients;
 using BackOffice.WebApi.Application;
 using BackOffice.WebApi.Models;
 
@@ -6,9 +7,9 @@ namespace BackOffice.WebApi.Controllers
 {
     public static class ControllersHelpers
     {
-        public static Models.AddressDto ToAddressDto(this Contracts.Clients.AddressDto address)
+        public static AddressApiDto ToApiDto(this AddressClientDto address)
         {
-            return new Models.AddressDto()
+            return new AddressApiDto()
             {
                 AddressId = address.AddressId,
                 OwnerAccountId = address.OwnerAccountId,
@@ -24,9 +25,9 @@ namespace BackOffice.WebApi.Controllers
         }
 
 
-        public static Models.AccountDto ToAccountDto(this Contracts.Clients.AccountDto address)
+        public static AccountApiDto ToApiDto(this AccountClientDto address)
         {
-            return new Models.AccountDto()
+            return new AccountApiDto()
             {
                 AccountId = address.AccountId,
                 Name = address.Name,
@@ -36,9 +37,9 @@ namespace BackOffice.WebApi.Controllers
             };
         }
 
-        public static Models.ProductDto ToProductDto(this Contracts.Clients.ProductDto product)
+        public static ProductApiDto ToApiDto(this ProductClientDto product)
         {
-            return new Models.ProductDto()
+            return new ProductApiDto()
             {
                 Id = product.Id,
                 CategoryName = product.CategoryName,
@@ -49,9 +50,9 @@ namespace BackOffice.WebApi.Controllers
             };
         }
 
-        public static Models.CategoryDto ToCategoryDto(this Contracts.Clients.CategoryDto category)
+        public static CategoryApiDto ToApiDto(this CategoryClientDto category)
         {
-            return new Models.CategoryDto()
+            return new CategoryApiDto()
             {
                 Name = category.Name,
                 Description = category.Description,
@@ -59,7 +60,7 @@ namespace BackOffice.WebApi.Controllers
         }
 
 
-        public static CreateProductCommandInput ToCommandInput(this CreateProductDto inputDto)
+        public static CreateProductCommandInput ToCommandInput(this CreateProductApiDto inputDto)
         {
             var cmdInput = new CreateProductCommandInput();
             cmdInput.Name = inputDto.Name;

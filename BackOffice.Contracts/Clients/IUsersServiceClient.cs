@@ -2,10 +2,10 @@
 {
     public interface IUsersServiceClient
     {
-        Task<IEnumerable<AccountDto>> GetAllAccounts();
+        Task<IEnumerable<AccountClientDto>> GetAllAccounts();
     }
 
-    public class AccountDto
+    public class AccountClientDto
     {
         public string AccountId { get; set; }
         public string Name { get; set; }

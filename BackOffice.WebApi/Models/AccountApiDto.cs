@@ -1,6 +1,6 @@
 ﻿namespace BackOffice.WebApi.Models
 {
-    public class AccountDto
+    public class AccountApiDto
     {
         public string AccountId { get; set; }
         public string Name { get; set; }

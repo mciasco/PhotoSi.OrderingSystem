@@ -17,10 +17,10 @@ namespace BackOffice.Infrastructure.Clients
             this._httpClient = httpClient;
         }
 
-        public async Task<ProductDto> CreateNewProduct(CreateNewProductDto createNewProductDto)
+        public async Task<ProductClientDto> CreateNewProduct(CreateNewProductClientDto createNewProductDto)
         {
-            var response = await _httpClient.PostAsJsonAsync<CreateNewProductDto>($"api/products", createNewProductDto);
-            var productDto = await response.Content.ReadFromJsonAsync<ProductDto>();
+            var response = await _httpClient.PostAsJsonAsync<CreateNewProductClientDto>($"api/products", createNewProductDto);
+            var productDto = await response.Content.ReadFromJsonAsync<ProductClientDto>();
             return productDto;
         }
 
@@ -30,15 +30,15 @@ namespace BackOffice.Infrastructure.Clients
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<IEnumerable<CategoryDto>> GetAllCategories()
+        public async Task<IEnumerable<CategoryClientDto>> GetAllCategories()
         {
-            var categoryDtos = await _httpClient.GetFromJsonAsync<IEnumerable<CategoryDto>>($"api/categories");
+            var categoryDtos = await _httpClient.GetFromJsonAsync<IEnumerable<CategoryClientDto>>($"api/categories");
             return categoryDtos;
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllProducts()
+        public async Task<IEnumerable<ProductClientDto>> GetAllProducts()
         {
-            var productDtos = await _httpClient.GetFromJsonAsync<IEnumerable<ProductDto>>($"api/products");
+            var productDtos = await _httpClient.GetFromJsonAsync<IEnumerable<ProductClientDto>>($"api/products");
             return productDtos;
         }
     }

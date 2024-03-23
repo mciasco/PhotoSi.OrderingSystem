@@ -5,9 +5,9 @@ namespace Users.WebApi.Controllers
 {
     public static class ControllersHelpers
     {
-        public static AccountDto ToAccountDto(this Account account)
+        public static AccountApiDto ToApiDto(this Account account)
         {
-            return new AccountDto()
+            return new AccountApiDto()
             {
                 AccountId = account.AccountId,
                 Name = account.Name,

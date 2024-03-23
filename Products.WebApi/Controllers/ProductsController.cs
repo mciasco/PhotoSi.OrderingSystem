@@ -16,15 +16,15 @@ namespace Products.WebApi.Controllers
         }
 
         [HttpGet(Name = "GetAllProducts")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetAllProducts([FromServices] GetAllProductsCommandHandler commandHandler)
+        public async Task<ActionResult<IEnumerable<ProductApiDto>>> GetAllProducts([FromServices] GetAllProductsCommandHandler commandHandler)
         {
             var products = await commandHandler.Execute().ConfigureAwait(false);
 
-            return Ok(products.Select(p => p.ToProductDto()));
+            return Ok(products.Select(p => p.ToApiDto()));
         }
 
         [HttpGet("{productId}", Name = "GetProductById")]
-        public async Task<ActionResult<ProductDto>> GetProductById(
+        public async Task<ActionResult<ProductApiDto>> GetProductById(
             [FromRoute] string productId,
             [FromServices] GetProductByIdCommandHandler commandHandler)
         {
@@ -32,30 +32,30 @@ namespace Products.WebApi.Controllers
                           
             return product is null
                 ? NotFound($"No product found with id {productId}") 
-                : Ok(product.ToProductDto());
+                : Ok(product.ToApiDto());
 
         }
 
 
         [HttpGet("Categories/{categoryName}", Name = "GetProductsByCategory")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByCategory(
+        public async Task<ActionResult<IEnumerable<ProductApiDto>>> GetProductsByCategory(
             [FromRoute] string categoryName,
             [FromServices] GetProductsByCategoryCommandHandler commandHandler)
         {
             var products = await commandHandler.Execute(categoryName).ConfigureAwait(false);
 
-            return Ok(products.Select(p => p.ToProductDto()));
+            return Ok(products.Select(p => p.ToApiDto()));
         }
 
 
         [HttpPost(Name = "CreateNewProduct")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> CreateNewProduct(
-            [FromBody] CreateNewProductDto createNewProductDto,
+        public async Task<ActionResult<IEnumerable<ProductApiDto>>> CreateNewProduct(
+            [FromBody] CreateNewProductApiDto createNewProductDto,
             [FromServices] CreateNewProductCommandHandler commandHandler)
         {
             var cmdInput = createNewProductDto.ToCommandInput();
             var newProduct = await commandHandler.Execute(cmdInput);
-            return Ok(newProduct.ToProductDto());
+            return Ok(newProduct.ToApiDto());
         }
     }
 }

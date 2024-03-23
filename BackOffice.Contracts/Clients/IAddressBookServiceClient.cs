@@ -8,11 +8,11 @@ namespace BackOffice.Contracts.Clients
 {
     public interface IAddressBookServiceClient
     {
-        Task<IEnumerable<AddressDto>> GetAllAddresses();
+        Task<IEnumerable<AddressClientDto>> GetAllAddresses();
     }
 
 
-    public class AddressDto
+    public class AddressClientDto
     {
         public string AddressId { get; set; }
         public string OwnerAccountId { get; set; }

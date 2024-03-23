@@ -2,10 +2,10 @@
 {
     public interface IAddressBookServiceClient
     {
-        Task<IEnumerable<AddressDto>> GetAddressByAccountId(string accountId);
+        Task<IEnumerable<AddressClientDto>> GetAddressByAccountId(string accountId);
     }
 
-    public class AddressDto
+    public class AddressClientDto
     {
         public string AddressId { get; set; }
         public string OwnerAccountId { get; set; }

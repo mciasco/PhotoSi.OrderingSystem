@@ -16,32 +16,32 @@ namespace Users.WebApi.Controllers
         }
 
         [HttpGet(Name = "GetAllAccounts")]
-        public async Task<ActionResult<IEnumerable<AccountDto>>> GetAllAccounts([FromServices] GetAllAccountsCommandHandler commandHandler)
+        public async Task<ActionResult<IEnumerable<AccountApiDto>>> GetAllAccounts([FromServices] GetAllAccountsCommandHandler commandHandler)
         {
             var users = await commandHandler.Execute();
-            return Ok(users.Select(u => u.ToAccountDto()));
+            return Ok(users.Select(u => u.ToApiDto()));
         }
 
         [HttpGet("{accountId}", Name = "GetAccountById")]
-        public async Task<ActionResult<AccountDto>> GetAccountById(
+        public async Task<ActionResult<AccountApiDto>> GetAccountById(
             [FromRoute] string accountId,
             [FromServices] GetAccountByIdCommandHandler commandHandler)
         {
             var user = await commandHandler.Execute(accountId);
             return user is null
                 ? NotFound($"No account found with id {accountId}")
-                : Ok(user.ToAccountDto());
+                : Ok(user.ToApiDto());
         }
 
         [HttpGet("usernames/{username}", Name = "GetAccountsByUsername")]
-        public async Task<ActionResult<IEnumerable<AccountDto>>> GetAccountsByUsername(
+        public async Task<ActionResult<IEnumerable<AccountApiDto>>> GetAccountsByUsername(
             [FromRoute] string username,
             [FromServices] GetAccountsByUsernameCommandHandler commandHandler)
         {
             var users = await commandHandler.Execute(username);
             return users is null || !users.Any()
                 ? NotFound($"No accounts found with username {username}")
-                : Ok(users.Select(u => u.ToAccountDto()));
+                : Ok(users.Select(u => u.ToApiDto()));
         }
     }
 }

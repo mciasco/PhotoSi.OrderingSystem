@@ -16,11 +16,11 @@ namespace Products.WebApi.Controllers
         }
 
         [HttpGet(Name = "GetAllCategories")]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAllCategories([FromServices] GetAllCategoriesCommandHandler commandHandler)
+        public async Task<ActionResult<IEnumerable<CategoryApiDto>>> GetAllCategories([FromServices] GetAllCategoriesCommandHandler commandHandler)
         {
             var categories = await commandHandler.Execute().ConfigureAwait(false);
 
-            return Ok(categories.Select(c => c.ToCategoryDto()));
+            return Ok(categories.Select(c => c.ToApiDto()));
         }
     }
 }

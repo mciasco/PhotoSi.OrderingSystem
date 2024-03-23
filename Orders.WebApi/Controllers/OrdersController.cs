@@ -16,16 +16,16 @@ namespace Orders.WebApi.Controllers
         }
 
         [HttpGet(Name = "GetAllOrders")]
-        public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllOrders(
+        public async Task<ActionResult<IEnumerable<OrderApiDto>>> GetAllOrders(
             [FromServices] GetAllOrdersCommandHandler commandHandler)
         {
             var orders = await commandHandler.Execute().ConfigureAwait(false);
 
-            return Ok(orders.Select(o => o.ToOrderDto()));
+            return Ok(orders.Select(o => o.ToApiDto()));
         }
 
         [HttpGet("{orderId}", Name = "GetOrderById")]
-        public async Task<ActionResult<OrderDto>> GetOrderById(
+        public async Task<ActionResult<OrderApiDto>> GetOrderById(
             [FromRoute] string orderId, 
             [FromServices] GetOrderByIdCommandHandler commandHandler)
         {
@@ -34,18 +34,18 @@ namespace Orders.WebApi.Controllers
             if(orderFound is null)
                 return NotFound("No order found with id " + orderId);
             else
-                return Ok(orderFound.ToOrderDto());
+                return Ok(orderFound.ToApiDto());
         }
 
         [HttpPost(Name = "CreateNewOrder")]
-        public async Task<ActionResult<OrderDto>> CreateNewOrder(
-            [FromBody] CreateNewOrderDto createNewOrderDto,
+        public async Task<ActionResult<OrderApiDto>> CreateNewOrder(
+            [FromBody] CreateNewOrderApiDto createNewOrderDto,
             [FromServices] CreateNewOrderCommandHandler commandHandler)
         {
             var cmdInput = createNewOrderDto.ToCommandInput();
             var newOrder = await commandHandler.Execute(cmdInput);
 
-            return Ok(newOrder.ToOrderDto());
+            return Ok(newOrder.ToApiDto());
         }
     }
 

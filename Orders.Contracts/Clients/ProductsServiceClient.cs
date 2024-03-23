@@ -8,10 +8,10 @@ namespace Orders.Contracts.Clients
 {
     public interface IProductsServiceClient
     {
-        Task<ProductDto> GetProductById(string productId);
+        Task<ProductClientDto> GetProductById(string productId);
     }
 
-    public class ProductDto
+    public class ProductClientDto
     {
         public string Id { get; set; }
         public string Name { get; set; }

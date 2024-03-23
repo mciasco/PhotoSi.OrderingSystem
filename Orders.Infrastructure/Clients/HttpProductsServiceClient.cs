@@ -17,9 +17,9 @@ namespace Orders.Infrastructure.Clients
             this._httpClient = httpClient;
         }
 
-        public async Task<ProductDto> GetProductById(string productId)
+        public async Task<ProductClientDto> GetProductById(string productId)
         {
-            var productDto = await _httpClient.GetFromJsonAsync<ProductDto>($"api/products/{productId}");
+            var productDto = await _httpClient.GetFromJsonAsync<ProductClientDto>($"api/products/{productId}");
 
             return productDto;
         }

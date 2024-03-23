@@ -1,6 +1,6 @@
-﻿namespace BackOffice.WebApi.Models
+﻿namespace Products.WebApi.Models
 {
-    public class CategoryDto
+    public class CategoryApiDto
     {
         public string Name { get; set; }
         public string Description { get; set; }

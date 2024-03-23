@@ -15,11 +15,11 @@ namespace BackOffice.WebApi.Controllers
         }
 
         [HttpGet(Name = "GetAllAccounts")]
-        public async Task<ActionResult<IEnumerable<Models.AccountDto>>> GetAllAccounts(
+        public async Task<ActionResult<IEnumerable<Models.AccountApiDto>>> GetAllAccounts(
             [FromServices] GetAllAccountsCommandHandler commandHandler)
         {
             var accounts = await commandHandler.Execute();
-            return Ok(accounts.Select(a => a.ToAccountDto()));
+            return Ok(accounts.Select(a => a.ToApiDto()));
         }
     }
 }

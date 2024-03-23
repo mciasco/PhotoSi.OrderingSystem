@@ -1,8 +1,7 @@
-﻿namespace BackOffice.WebApi.Models
+﻿namespace Products.WebApi.Models
 {
-    public class ProductDto
+    public class CreateNewProductApiDto
     {
-        public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string CategoryName { get; set; }

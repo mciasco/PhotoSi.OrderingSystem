@@ -2,7 +2,7 @@
 
 namespace BackOffice.WebApi.Application
 {
-    public class GetAllAccountsCommandHandler : BaseCommandHandlerNoInputWithOutput<IEnumerable<AccountDto>>
+    public class GetAllAccountsCommandHandler : BaseCommandHandlerNoInputWithOutput<IEnumerable<AccountClientDto>>
     {
         private readonly IUsersServiceClient _usersServiceClient;
 
@@ -11,7 +11,7 @@ namespace BackOffice.WebApi.Application
             this._usersServiceClient = usersServiceClient;
         }
 
-        public override async Task<IEnumerable<AccountDto>> Execute()
+        public override async Task<IEnumerable<AccountClientDto>> Execute()
         {
             return await _usersServiceClient.GetAllAccounts();
         }

@@ -2,10 +2,10 @@
 {
     public interface IUsersServiceClient
     {
-        Task<AccountDto> GetAccountById(string accountId);
+        Task<AccountClientDto> GetAccountById(string accountId);
     }
 
-    public class AccountDto
+    public class AccountClientDto
     {
         public string AccountId { get; set; }
         public string Name { get; set; }

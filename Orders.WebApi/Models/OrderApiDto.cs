@@ -1,11 +1,7 @@
 ﻿namespace Orders.WebApi.Models
 {
-    public class OrderDto
+    public class OrderApiDto
     {
-        public OrderDto()
-        {
-        }
-
         public string Id { get; set; }
         public string Description { get; set; }
         public DateTime CreatedAt { get; set; }

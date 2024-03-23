@@ -2,7 +2,7 @@
 
 namespace BackOffice.WebApi.Application
 {
-    public class CreateProductCommandHandler : BaseCommandHandlerWithInputWithOutput<CreateProductCommandInput, ProductDto>
+    public class CreateProductCommandHandler : BaseCommandHandlerWithInputWithOutput<CreateProductCommandInput, ProductClientDto>
     {
         private readonly IProductsServiceClient _productsServiceClient;
 
@@ -11,9 +11,9 @@ namespace BackOffice.WebApi.Application
             this._productsServiceClient = productsServiceClient;
         }
 
-        public override async Task<ProductDto> Execute(CreateProductCommandInput input)
+        public override async Task<ProductClientDto> Execute(CreateProductCommandInput input)
         {
-            var createNewProductDto = new CreateNewProductDto();
+            var createNewProductDto = new CreateNewProductClientDto();
             createNewProductDto.Name = input.Name;
             createNewProductDto.Description = input.Description;
             createNewProductDto.CategoryName = input.CategoryName;

@@ -3,7 +3,7 @@ using BackOffice.Contracts.Clients;
 
 namespace BackOffice.WebApi.Application
 {
-    public class GetAllAddressesCommandHandler : BaseCommandHandlerNoInputWithOutput<IEnumerable<AddressDto>>
+    public class GetAllAddressesCommandHandler : BaseCommandHandlerNoInputWithOutput<IEnumerable<AddressClientDto>>
     {
         private readonly IAddressBookServiceClient _addressBookServiceClient;
 
@@ -12,7 +12,7 @@ namespace BackOffice.WebApi.Application
             this._addressBookServiceClient = addressBookServiceClient;
         }
 
-        public override async Task<IEnumerable<AddressDto>> Execute()
+        public override async Task<IEnumerable<AddressClientDto>> Execute()
         {
             return await _addressBookServiceClient.GetAllAddresses();
         }

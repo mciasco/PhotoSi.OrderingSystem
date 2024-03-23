@@ -15,11 +15,11 @@ namespace BackOffice.WebApi.Controllers
         }
 
         [HttpGet(Name = "GetAllAddresses")]
-        public async Task<ActionResult<IEnumerable<Models.AddressDto>>> GetAllAddresses(
+        public async Task<ActionResult<IEnumerable<Models.AddressApiDto>>> GetAllAddresses(
             [FromServices] GetAllAddressesCommandHandler commandHandler)
         {
             var addresses = await commandHandler.Execute();
-            return Ok(addresses.Select(a => a.ToAddressDto()));
+            return Ok(addresses.Select(a => a.ToApiDto()));
         }
     }
 }

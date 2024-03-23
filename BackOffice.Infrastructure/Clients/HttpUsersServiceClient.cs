@@ -12,9 +12,9 @@ namespace BackOffice.Infrastructure.Clients
             this._httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<AccountDto>> GetAllAccounts()
+        public async Task<IEnumerable<AccountClientDto>> GetAllAccounts()
         {
-            var accountDtos = await _httpClient.GetFromJsonAsync<IEnumerable<AccountDto>>($"api/accounts");
+            var accountDtos = await _httpClient.GetFromJsonAsync<IEnumerable<AccountClientDto>>($"api/accounts");
             return accountDtos;
         }
     }

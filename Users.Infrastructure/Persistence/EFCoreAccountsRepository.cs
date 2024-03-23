@@ -13,6 +13,16 @@ namespace Users.Infrastructure.Persistence
             this._dbContext = dbContext;
         }
 
+        public async Task AddAccount(Account account)
+        {
+            _dbContext.Accounts.Add(account);
+        }
+
+        public async Task DeleteAccount(Account account)
+        {
+            _dbContext.Accounts.Remove(account);
+        }
+
         public async Task<Account> GetAccountById(string input)
         {
             return await _dbContext.Accounts.FindAsync(input);

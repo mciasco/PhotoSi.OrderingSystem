@@ -39,11 +39,11 @@ namespace BackOffice.WebApi.Controllers
             [FromRoute] string productId,
             [FromServices] DeleteProductCommandHandler commandHandler)
         {
-            var deletedId = await commandHandler.Execute(productId);
-            if (string.IsNullOrEmpty(deletedId))
+            var deleted = await commandHandler.Execute(productId);
+            if (!deleted)
                 return StatusCode(500);
             else
-                return Ok(deletedId);
+                return Ok(productId);
         }
 
 

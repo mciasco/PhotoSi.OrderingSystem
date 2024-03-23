@@ -15,7 +15,7 @@ namespace BackOffice.WebApi.Controllers
                 OwnerAccountId = address.OwnerAccountId,
                 AddressName = address.AddressName,
                 Country = address.Country,
-                StateProvice = address.StateProvice,
+                StateProvince = address.StateProvince,
                 City = address.City,
                 PostalCode = address.PostalCode,
                 StreetName = address.StreetName,

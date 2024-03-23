@@ -30,7 +30,7 @@ namespace AddressBook.Infrastructure.Persistence
                 a.Property(x => x.OwnerAccountId).HasColumnName("OwnerAccountId").IsRequired(true);
                 a.Property(x => x.AddressName).HasColumnName("AddressName").IsRequired(false);
                 a.Property(x => x.Country).HasColumnName("Country").IsRequired(true);
-                a.Property(x => x.StateProvice).HasColumnName("Country").IsRequired(true);
+                a.Property(x => x.StateProvince).HasColumnName("StateProvince").IsRequired(true);
                 a.Property(x => x.City).HasColumnName("City").IsRequired(true);
                 a.Property(x => x.PostalCode).HasColumnName("PostalCode").IsRequired(true);
                 a.Property(x => x.StreetName).HasColumnName("StreetName").IsRequired(true);

@@ -48,7 +48,7 @@ builder.Services.AddScoped<GetAllProductsCommandHandler>();
 builder.Services.AddScoped<GetAllCategoriesCommandHandler>();
 builder.Services.AddScoped<CreateProductCommandHandler>();
 builder.Services.AddScoped<DeleteProductCommandHandler>();
-
+builder.Services.AddScoped<CreateAccountCommandHandler>();
 
 var app = builder.Build();
 

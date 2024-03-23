@@ -13,6 +13,13 @@ namespace AddressBook.Infrastructure.Persistence
             this._dbContext = dbContext;
         }
 
+        public async Task AddAddress(Address address)
+        {
+            await _dbContext
+                .Addresses
+                .AddAsync(address);
+        }
+
         public async Task<IEnumerable<Address>> GetAddressesByAccountId(string input)
         {
             return await _dbContext

@@ -43,5 +43,16 @@ namespace Users.WebApi.Controllers
                 ? NotFound($"No accounts found with username {username}")
                 : Ok(users.Select(u => u.ToApiDto()));
         }
+
+
+        [HttpPost(Name = "RegisterNewAccount")]
+        public async Task<ActionResult<IEnumerable<AccountApiDto>>> RegisterNewAccount(
+            [FromBody] RegisterNewAccountApiDto registerNewAccountApiDto,
+            [FromServices] RegisterNewAccountCommandHandler commandHandler)
+        {
+            var cmdInput = registerNewAccountApiDto.ToCommandInput();
+            var userCreated = await commandHandler.Execute(cmdInput);
+            return Ok(userCreated.ToApiDto());
+        }
     }
 }

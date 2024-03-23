@@ -12,6 +12,11 @@ namespace BackOffice.Infrastructure.Clients
             this._httpClient = httpClient;
         }
 
+        public Task<AccountClientDto> CreateNewAccount()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<AccountClientDto>> GetAllAccounts()
         {
             var accountDtos = await _httpClient.GetFromJsonAsync<IEnumerable<AccountClientDto>>($"api/accounts");

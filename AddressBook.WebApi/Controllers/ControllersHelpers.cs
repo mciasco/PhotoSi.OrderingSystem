@@ -1,11 +1,13 @@
 ﻿using AddressBook.Contracts.Domain;
+using AddressBook.WebApi.Application;
 using AddressBook.WebApi.Models;
+using System.Runtime.CompilerServices;
 
 namespace AddressBook.WebApi.Controllers
 {
     public static class ControllersHelpers
     {
-        public static AddressDto ToAccountDto(this Address address)
+        public static AddressDto ToApiDto(this Address address)
         {
             return new AddressDto()
             {
@@ -13,7 +15,7 @@ namespace AddressBook.WebApi.Controllers
                 OwnerAccountId = address.OwnerAccountId,
                 AddressName = address.AddressName,
                 Country = address.Country,
-                StateProvice = address.StateProvice,
+                StateProvince = address.StateProvince,
                 City = address.City,
                 PostalCode = address.PostalCode,
                 StreetName = address.StreetName,
@@ -21,5 +23,23 @@ namespace AddressBook.WebApi.Controllers
                 IsMainAddress = address.IsMainAddress,
             };
         }
+
+        public static AddAddressCommandInput ToCommandInput(this AddAddressApiDto addAddressApiDto)
+        {
+            return new AddAddressCommandInput()
+            {
+                OwnerAccountId = addAddressApiDto.OwnerAccountId,
+                AddressName = addAddressApiDto.AddressName,
+                Country = addAddressApiDto.Country,
+                StateProvince = addAddressApiDto.StateProvince,
+                City = addAddressApiDto.City,
+                PostalCode = addAddressApiDto.PostalCode,
+                StreetName = addAddressApiDto.StreetName,
+                StreetNumber = addAddressApiDto.StreetNumber,
+                IsMainAddress = addAddressApiDto.IsMainAddress,
+            };
+        }
     }
+
+    
 }

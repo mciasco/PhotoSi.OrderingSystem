@@ -24,11 +24,16 @@ namespace BackOffice.Infrastructure.Clients
             return productDto;
         }
 
-        public async Task<string> DeleteProductById(string input)
+        public async Task<bool> DeleteProductById(string input)
         {
             var response = await _httpClient.DeleteAsync($"api/products/{input}");
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                var resString = await response.Content.ReadAsStringAsync();
+                return bool.Parse(resString);
+            }
+            else
+                return false;
         }
 
         public async Task<IEnumerable<CategoryClientDto>> GetAllCategories()

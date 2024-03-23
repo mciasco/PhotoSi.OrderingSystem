@@ -2,7 +2,7 @@
 
 namespace Products.WebApi.Application
 {
-    public class DeleteProductByIdCommandHandler : BaseCommandHandlerWithInputNoOutput<string>
+    public class DeleteProductByIdCommandHandler : BaseCommandHandlerWithInputWithOutput<string, bool>
     {
         private readonly IProductsRepository _productsRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -13,14 +13,14 @@ namespace Products.WebApi.Application
             this._unitOfWork = unitOfWork;
         }
 
-        public override async Task Execute(string input)
+        public override async Task<bool> Execute(string input)
         {
             var productToDelete = await _productsRepository.GetProductById(input);
             if (productToDelete is null)
                 throw new ArgumentOutOfRangeException($"Nessun prodotto trovato con id '{input}'");
 
             await _productsRepository.DeleteProduct(productToDelete);
-            await _unitOfWork.SaveChangesAsync();
+            return await _unitOfWork.SaveChangesAsync() == 1;
         }
     }
 }

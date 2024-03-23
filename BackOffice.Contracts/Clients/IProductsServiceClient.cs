@@ -11,8 +11,9 @@ namespace BackOffice.Contracts.Clients
         Task<IEnumerable<ProductClientDto>> GetAllProducts();
         Task<IEnumerable<CategoryClientDto>> GetAllCategories();
         Task<ProductClientDto> CreateNewProduct(CreateNewProductClientDto createNewProductDto);
-        Task<string> DeleteProductById(string input);
+        Task<bool> DeleteProductById(string input);
     }
+
     
     public class ProductClientDto
     {

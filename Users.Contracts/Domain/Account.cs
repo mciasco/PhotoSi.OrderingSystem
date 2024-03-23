@@ -8,6 +8,29 @@ namespace Users.Contracts.Domain
 {
     public class Account
     {
+        protected Account()
+        {
+        }
+
+        public static Account Create(
+            string name,
+            string surname,
+            string registrationEmail,
+            string username,
+            string passwordHash)
+        {
+            return new Account()
+            {
+                AccountId = Guid.NewGuid().ToString(),
+                Name = name,
+                Surname = surname,
+                RegistrationEmail = registrationEmail,
+                Username = username,
+                PasswordHash = passwordHash
+            };
+        }
+
+
         public string AccountId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }

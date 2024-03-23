@@ -2,7 +2,7 @@
 
 namespace BackOffice.WebApi.Application
 {
-    public class DeleteProductCommandHandler : BaseCommandHandlerWithInputWithOutput<string, string>
+    public class DeleteProductCommandHandler : BaseCommandHandlerWithInputWithOutput<string, bool>
     {
         private readonly IProductsServiceClient _productsServiceClient;
 
@@ -11,7 +11,7 @@ namespace BackOffice.WebApi.Application
             this._productsServiceClient = productsServiceClient;
         }
 
-        public override async Task<string> Execute(string input)
+        public override async Task<bool> Execute(string input)
         {
             return await _productsServiceClient.DeleteProductById(input);
         }

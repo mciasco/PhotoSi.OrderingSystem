@@ -20,7 +20,7 @@ namespace AddressBook.WebApi.Controllers
             [FromServices] GetAllAddressesCommandHandler commandHandler)
         {
             var addresses = await commandHandler.Execute();
-            return Ok(addresses.Select(a => a.ToAccountDto()));
+            return Ok(addresses.Select(a => a.ToApiDto()));
         }
 
         [HttpGet("accounts/{accountId}", Name = "GetAddressesByAccountId")]
@@ -29,7 +29,17 @@ namespace AddressBook.WebApi.Controllers
             [FromServices] GetAddressesByAccountIdCommandHandler commandHandler)
         {
             var addresses = await commandHandler.Execute(accountId);
-            return Ok(addresses.Select(a => a.ToAccountDto()));
+            return Ok(addresses.Select(a => a.ToApiDto()));
+        }
+
+        [HttpPost(Name = "AddAddress")]
+        public async Task<ActionResult<AddressDto>> AddAddress(
+            [FromBody] AddAddressApiDto addAddressApiDto,
+            [FromServices] AddAddressCommandHandler commandHandler)
+        {
+            var cmdInput = addAddressApiDto.ToCommandInput();
+            var address = await commandHandler.Execute(cmdInput);
+            return Ok(address.ToApiDto());
         }
     }
 }

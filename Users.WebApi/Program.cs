@@ -1,7 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Users.Contracts.Clients;
+using Users.Contracts.Domain;
 using Users.Contracts.Persistence;
+using Users.Infrastructure.Clients;
 using Users.Infrastructure.Persistence;
 using Users.WebApi.Application;
+using Users.WebApi.Configuration;
 using Users.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +31,21 @@ builder.Services.AddScoped<IAccountsRepository, EFCoreAccountsRepository>();
 builder.Services.AddScoped<GetAllAccountsCommandHandler>();
 builder.Services.AddScoped<GetAccountByIdCommandHandler>();
 builder.Services.AddScoped<GetAccountsByUsernameCommandHandler>();
+builder.Services.AddScoped<RegisterNewAccountCommandHandler>();
 
+
+// configuration
+builder.Services.Configure<AddressBookServiceSettings>(builder.Configuration.GetSection("Clients:AddressBookServiceSettings"));
+
+// http clients
+builder.Services.AddHttpClient<IAddressBookServiceClient, HttpAddressBookServiceClient>((serviceProvider, client) =>
+{
+    var settings = serviceProvider.GetRequiredService<IOptions<AddressBookServiceSettings>>();
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
+    client.BaseAddress = new Uri(settings.Value.BaseUrl);
+});
+
+builder.Services.AddTransient<IAccountPasswordHasher, MD5AccountPasswordHasher>();
 
 var app = builder.Build();
 

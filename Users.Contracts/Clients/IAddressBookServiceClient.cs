@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackOffice.Contracts.Clients
+namespace Users.Contracts.Clients
 {
     public interface IAddressBookServiceClient
     {
-        Task<IEnumerable<AddressClientDto>> GetAllAddresses();
+        Task<AddressClientDto> AddAddress(AddAddressClientDto addAddressClientDto);
     }
 
 
@@ -24,6 +24,18 @@ namespace BackOffice.Contracts.Clients
         public string StreetName { get; set; }
         public string StreetNumber { get; set; }
         public bool IsMainAddress { get; set; }
+    }
 
+    public class AddAddressClientDto
+    {
+        public string OwnerAccountId { get; set; }
+        public string AddressName { get; set; }
+        public string Country { get; set; }
+        public string StateProvince { get; set; }
+        public string City { get; set; }
+        public string PostalCode { get; set; }
+        public string StreetName { get; set; }
+        public string StreetNumber { get; set; }
+        public bool IsMainAddress { get; set; }
     }
 }

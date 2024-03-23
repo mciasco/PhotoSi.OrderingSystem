@@ -25,6 +25,7 @@ namespace BackOffice.WebApi.Application
     }
 
 
+
     public class CreateProductCommandInput
     {
         public string Name { get; set; }

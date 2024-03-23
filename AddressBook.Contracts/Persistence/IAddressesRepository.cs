@@ -6,5 +6,6 @@ namespace AddressBook.Contracts.Persistence
     {
         Task<IEnumerable<Address>> GetAddressesByAccountId(string input);
         Task<IEnumerable<Address>> GetAllAddresses();
+        Task AddAddress(Address address);
     }
 }

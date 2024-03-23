@@ -20,5 +20,14 @@ namespace Users.Infrastructure.Clients
             else
                 return null;
         }
+
+        public async Task<bool> DeleteAllAddressByAccount(string input)
+        {
+            var response = await _httpClient.DeleteAsync($"api/addresses/accounts/{input}");
+            if(response.IsSuccessStatusCode)
+                return bool.Parse(await response.Content.ReadAsStringAsync());
+            else
+                return false;
+        }
     }
 }

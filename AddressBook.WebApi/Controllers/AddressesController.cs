@@ -41,5 +41,16 @@ namespace AddressBook.WebApi.Controllers
             var address = await commandHandler.Execute(cmdInput);
             return Ok(address.ToApiDto());
         }
+
+
+        [HttpDelete("accounts/{accountId}", Name = "DeleteAllAddressByAccount")]
+        public async Task<ActionResult<bool>> DeleteAllAddressByAccount(
+            [FromRoute] string accountId,
+            [FromServices] DeleteAllAddressByAccount commandHandler)
+        {
+            var deleted = await commandHandler.Execute(accountId);
+            return Ok(deleted);
+        }
+
     }
 }

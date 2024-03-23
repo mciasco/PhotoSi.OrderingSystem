@@ -20,6 +20,11 @@ namespace AddressBook.Infrastructure.Persistence
                 .AddAsync(address);
         }
 
+        public async Task DeleteAddresses(IEnumerable<Address> addressesByAccount)
+        {
+            _dbContext.Addresses.RemoveRange(addressesByAccount);
+        }
+
         public async Task<IEnumerable<Address>> GetAddressesByAccountId(string input)
         {
             return await _dbContext

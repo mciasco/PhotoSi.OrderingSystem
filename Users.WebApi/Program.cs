@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Products.WebApi.Application;
 using Users.Contracts.Clients;
 using Users.Contracts.Domain;
 using Users.Contracts.Persistence;
@@ -28,10 +29,12 @@ builder.Services.AddScoped<IUnitOfWork, EFCoreUnitOfWork>();
 builder.Services.AddScoped<IAccountsRepository, EFCoreAccountsRepository>();
 
 // command handlers
-builder.Services.AddScoped<GetAllAccountsCommandHandler>();
+builder.Services.AddScoped<DeleteAccountByIdCommandHandler>();
 builder.Services.AddScoped<GetAccountByIdCommandHandler>();
 builder.Services.AddScoped<GetAccountsByUsernameCommandHandler>();
+builder.Services.AddScoped<GetAllAccountsCommandHandler>();
 builder.Services.AddScoped<RegisterNewAccountCommandHandler>();
+
 
 
 // configuration

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Products.WebApi.Application;
 using Users.WebApi.Application;
 using Users.WebApi.Models;
 
@@ -53,6 +54,16 @@ namespace Users.WebApi.Controllers
             var cmdInput = registerNewAccountApiDto.ToCommandInput();
             var userCreated = await commandHandler.Execute(cmdInput);
             return Ok(userCreated.ToApiDto());
+        }
+
+
+        [HttpDelete("{accountId}", Name = "DeleteAccount")]
+        public async Task<ActionResult<bool>> DeleteAccountById(
+            [FromRoute] string accountId,
+            [FromServices] DeleteAccountByIdCommandHandler commandHandler)
+        {
+            var deleted = await commandHandler.Execute(accountId);
+            return Ok(deleted);
         }
     }
 }

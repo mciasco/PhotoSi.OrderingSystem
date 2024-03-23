@@ -9,6 +9,7 @@ namespace Users.Contracts.Clients
     public interface IAddressBookServiceClient
     {
         Task<AddressClientDto> AddAddress(AddAddressClientDto addAddressClientDto);
+        Task<bool> DeleteAllAddressByAccount(string input);
     }
 
 

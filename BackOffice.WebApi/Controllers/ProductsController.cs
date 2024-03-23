@@ -34,7 +34,7 @@ namespace BackOffice.WebApi.Controllers
         }
 
 
-        [HttpDelete("{productId}", Name = "DeleteProductById")]
+        [HttpDelete("{productId}", Name = "DeleteProduct")]
         public async Task<ActionResult<string>> DeleteProduct(
             [FromRoute] string productId,
             [FromServices] DeleteProductCommandHandler commandHandler)

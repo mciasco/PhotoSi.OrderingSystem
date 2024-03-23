@@ -33,5 +33,14 @@ namespace BackOffice.WebApi.Controllers
             return Ok(account.ToApiDto());
         }
 
+        [HttpDelete("{accountId}", Name = "DeleteAccount")]
+        public async Task<ActionResult<AccountApiDto>> DeleteAccount(
+            [FromRoute] string accountId,
+            [FromServices] DeleteAccountCommandHandler commandHandler)
+        {
+            var deleted = await commandHandler.Execute(accountId);
+            return Ok(deleted);
+        }
+
     }
 }

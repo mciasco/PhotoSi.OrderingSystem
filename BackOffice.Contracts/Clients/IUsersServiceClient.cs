@@ -2,6 +2,7 @@
 {
     public interface IUsersServiceClient
     {
+        Task<bool> DeleteAccountById(string input);
         Task<IEnumerable<AccountClientDto>> GetAllAccounts();
         Task<AccountClientDto> RegisterNewAccount(RegisterNewAccountClientDto registerNewAccountClientDto);
     }

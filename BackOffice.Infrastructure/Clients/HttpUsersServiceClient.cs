@@ -26,5 +26,14 @@ namespace BackOffice.Infrastructure.Clients
             var accountDtos = await _httpClient.GetFromJsonAsync<IEnumerable<AccountClientDto>>($"api/accounts");
             return accountDtos;
         }
+
+        public async Task<bool> DeleteAccountById(string input)
+        {
+            var response = await _httpClient.DeleteAsync($"api/accounts/{input}");
+            if (response.IsSuccessStatusCode)
+                return bool.Parse(await response.Content.ReadAsStringAsync());
+            else
+                return false;
+        }
     }
 }

@@ -57,7 +57,7 @@ namespace Users.WebApi.Controllers
         }
 
 
-        [HttpDelete("{accountId}", Name = "DeleteAccount")]
+        [HttpDelete("{accountId}", Name = "DeleteAccountById")]
         public async Task<ActionResult<bool>> DeleteAccountById(
             [FromRoute] string accountId,
             [FromServices] DeleteAccountByIdCommandHandler commandHandler)

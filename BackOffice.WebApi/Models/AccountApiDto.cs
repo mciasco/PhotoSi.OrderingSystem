@@ -8,4 +8,6 @@
         public string RegistrationEmail { get; set; }
         public string Username { get; set; }
     }
+
+    
 }

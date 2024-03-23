@@ -12,9 +12,13 @@ namespace BackOffice.Infrastructure.Clients
             this._httpClient = httpClient;
         }
 
-        public Task<AccountClientDto> CreateNewAccount()
+        public async Task<AccountClientDto> RegisterNewAccount(RegisterNewAccountClientDto registerNewAccountClientDto)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PostAsJsonAsync($"api/accounts", registerNewAccountClientDto);
+            if (response.IsSuccessStatusCode)
+                return await response.Content.ReadFromJsonAsync<AccountClientDto>();
+            else
+                return null;
         }
 
         public async Task<IEnumerable<AccountClientDto>> GetAllAccounts()

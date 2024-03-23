@@ -71,5 +71,27 @@ namespace BackOffice.WebApi.Controllers
 
             return cmdInput;
         }
+
+        public static CreateAccountCommandInput ToCommandInput(this CreateAccountApiDto inputDto)
+        {
+            return new CreateAccountCommandInput()
+            {
+                Name = inputDto.Name,
+                Surname = inputDto.Surname,
+                RegistrationEmail = inputDto.RegistrationEmail,
+                Username = inputDto.Username,
+                Password = inputDto.Password,
+                MainShippingAddress = new CreateAccountCommandInputMainShippingAddress()
+                {
+                    AddressName = inputDto.MainShippingAddress.AddressName,
+                    Country = inputDto.MainShippingAddress.Country,
+                    StateProvince = inputDto.MainShippingAddress.StateProvince,
+                    City = inputDto.MainShippingAddress.City,
+                    PostalCode = inputDto.MainShippingAddress.PostalCode,
+                    StreetName = inputDto.MainShippingAddress.StreetName,
+                    StreetNumber = inputDto.MainShippingAddress.StreetNumber,
+                }
+            };
+        }
     }
 }

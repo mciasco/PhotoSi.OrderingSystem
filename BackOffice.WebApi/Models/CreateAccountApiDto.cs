@@ -1,18 +1,18 @@
-﻿namespace Users.WebApi.Models
+﻿namespace BackOffice.WebApi.Models
 {
-    public class RegisterNewAccountApiDto
+    public class CreateAccountApiDto
     {
         public string Name { get; set; }
         public string Surname { get; set; }
         public string RegistrationEmail { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public RegisterNewAccountMainShippingAddressApiDto MainShippingAddress { get; set; }
+        public CreateAccountMainShippingAddressApiDto MainShippingAddress { get; set; }
 
     }
 
-    public class RegisterNewAccountMainShippingAddressApiDto 
-    { 
+    public class CreateAccountMainShippingAddressApiDto
+    {
         public string AddressName { get; set; }
         public string Country { get; set; }
         public string StateProvince { get; set; }

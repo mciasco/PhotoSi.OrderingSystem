@@ -15,7 +15,11 @@ namespace Products.WebApi.Application
 
         public override async Task Execute(string input)
         {
-            await _productsRepository.DeleteProduct(input);
+            var productToDelete = await _productsRepository.GetProductById(input);
+            if (productToDelete is null)
+                throw new ArgumentOutOfRangeException($"Nessun prodotto trovato con id '{input}'");
+
+            await _productsRepository.DeleteProduct(productToDelete);
             await _unitOfWork.SaveChangesAsync();
         }
     }

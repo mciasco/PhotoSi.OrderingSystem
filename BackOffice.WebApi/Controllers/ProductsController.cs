@@ -40,7 +40,10 @@ namespace BackOffice.WebApi.Controllers
             [FromServices] DeleteProductCommandHandler commandHandler)
         {
             var deletedId = await commandHandler.Execute(productId);
-            return Ok(deletedId);
+            if (string.IsNullOrEmpty(deletedId))
+                return StatusCode(500);
+            else
+                return Ok(deletedId);
         }
 
 

@@ -26,7 +26,8 @@ namespace BackOffice.Infrastructure.Clients
 
         public async Task<string> DeleteProductById(string input)
         {
-            var response = await _httpClient.DeleteAsync($"products/{input}");
+            var response = await _httpClient.DeleteAsync($"api/products/{input}");
+            response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 

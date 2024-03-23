@@ -21,6 +21,23 @@ namespace Products.WebApi.Middlewares
             {
                 await _next(context);
             }
+            catch (ArgumentOutOfRangeException exception)
+            {
+                _logger.LogError(
+                    exception, "Exception occurred: {Message}", exception.Message);
+
+                var problemDetails = new ProblemDetails
+                {
+                    Status = StatusCodes.Status404NotFound,
+                    Title = "Client Error",
+                    Detail = exception.Message
+                };
+
+                context.Response.StatusCode =
+                    StatusCodes.Status404NotFound;
+
+                await context.Response.WriteAsJsonAsync(problemDetails);
+            }
             catch (ArgumentException exception)
             {
                 _logger.LogError(

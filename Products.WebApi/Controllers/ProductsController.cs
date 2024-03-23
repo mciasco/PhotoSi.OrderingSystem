@@ -59,12 +59,12 @@ namespace Products.WebApi.Controllers
         }
 
         [HttpDelete("{productId}", Name = "DeleteProductById")]
-        public async Task<ActionResult> DeleteProductById(
+        public async Task<ActionResult<string>> DeleteProductById(
             [FromRoute] string productId,
             [FromServices] DeleteProductByIdCommandHandler commandHandler)
         {
             await commandHandler.Execute(productId);
-            return Ok();
+            return Ok(productId);
         }
     }
 }

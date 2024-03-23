@@ -9,6 +9,6 @@ namespace Products.Contracts.Persistence
         Task<Product> GetProductByName(string productName);
         Task<IEnumerable<Product>> GetProductsByCategory(string categoryName);
         Task AddProduct(Product product);
-        Task DeleteProduct(string input);
+        Task DeleteProduct(Product product);
     }
 }

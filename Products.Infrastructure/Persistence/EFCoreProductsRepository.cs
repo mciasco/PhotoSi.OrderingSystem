@@ -23,6 +23,17 @@ namespace Products.Infrastructure.Persistence
             await _dbContext.Products.AddAsync(product);
         }
 
+        public async Task DeleteProduct(string input)
+        {
+            // Per evitare una inutile doppia chiamata al DB dove prima recupero l'entità e poi la elimino
+            // uso la tecnica di marcare l'entità con l'id corrispondente come DELETED
+            // così il tracker interno di EFCore la eliminerà
+            var productToDelete = Product.CreateEmpty();
+            productToDelete.Id = input;
+            var trackedProductToDelete = _dbContext.Products.Attach(productToDelete);
+            trackedProductToDelete.State = EntityState.Deleted;
+        }
+
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
             return await _dbContext

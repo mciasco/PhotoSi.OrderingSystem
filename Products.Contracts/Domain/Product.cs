@@ -6,6 +6,13 @@
         {
         }
 
+        public static Product CreateEmpty()
+        {
+            var product = new Product();
+            product.Id = $"PRD_{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}";
+            return product;
+        }
+
         public static Product Create(
             string name,
             string description,

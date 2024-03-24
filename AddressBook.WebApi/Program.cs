@@ -3,6 +3,7 @@ using AddressBook.Contracts.Persistence;
 using AddressBook.Infrastructure.Persistence;
 using AddressBook.WebApi.Application;
 using AddressBook.WebApi.Middlewares;
+using Commons.Contracts.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 

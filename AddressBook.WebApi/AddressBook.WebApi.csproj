@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AddressBook.Contracts\AddressBook.Contracts.csproj" />
     <ProjectReference Include="..\AddressBook.Infrastructure\AddressBook.Infrastructure.csproj" />
+    <ProjectReference Include="..\Commons.Contracts\Commons.Contracts.csproj" />
     <ProjectReference Include="..\Commons.WebApi\Commons.WebApi.csproj" />
   </ItemGroup>
 

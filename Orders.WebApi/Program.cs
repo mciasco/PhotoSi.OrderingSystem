@@ -7,6 +7,7 @@ using Orders.Infrastructure.Persistence;
 using Orders.WebApi.Application;
 using Orders.WebApi.Configuration;
 using Orders.WebApi.Middlewares;
+using Commons.Contracts.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 

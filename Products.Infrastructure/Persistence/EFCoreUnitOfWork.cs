@@ -1,4 +1,5 @@
 ﻿using Products.Contracts.Persistence;
+using Commons.Contracts.Persistence;
 
 namespace Products.Infrastructure.Persistence
 {

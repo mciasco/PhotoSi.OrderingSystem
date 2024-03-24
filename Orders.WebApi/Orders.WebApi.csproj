@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Commons.Contracts\Commons.Contracts.csproj" />
     <ProjectReference Include="..\Commons.WebApi\Commons.WebApi.csproj" />
     <ProjectReference Include="..\Orders.Contracts\Orders.Contracts.csproj" />
     <ProjectReference Include="..\Orders.Infrastructure\Orders.Infrastructure.csproj" />

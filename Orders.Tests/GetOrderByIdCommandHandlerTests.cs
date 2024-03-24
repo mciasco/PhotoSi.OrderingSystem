@@ -2,6 +2,8 @@ using Moq;
 using Orders.Contracts.Domain;
 using Orders.Contracts.Persistence;
 using Orders.WebApi.Application;
+using Commons.Contracts.Persistence;
+
 
 namespace Orders.Tests
 {

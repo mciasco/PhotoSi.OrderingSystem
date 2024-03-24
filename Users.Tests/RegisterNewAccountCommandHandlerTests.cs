@@ -3,6 +3,7 @@ using Users.Contracts.Clients;
 using Users.Contracts.Domain;
 using Users.Contracts.Persistence;
 using Users.WebApi.Application;
+using Commons.Contracts.Persistence;
 
 namespace Users.Tests
 {

@@ -2,6 +2,7 @@ using Moq;
 using Products.Contracts.Domain;
 using Products.Contracts.Persistence;
 using Products.WebApi.Application;
+using Commons.Contracts.Persistence;
 
 namespace Products.Tests
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AddressBook.Contracts.Persistence
+namespace Commons.Contracts.Persistence
 {
     public interface IUnitOfWork
     {

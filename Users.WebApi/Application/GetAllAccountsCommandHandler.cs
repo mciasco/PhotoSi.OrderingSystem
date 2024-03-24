@@ -1,6 +1,7 @@
 ﻿using Users.Contracts.Domain;
 using Users.Contracts.Persistence;
 using Commons.WebApi.Application;
+using Commons.Contracts.Persistence;
 
 namespace Users.WebApi.Application
 {

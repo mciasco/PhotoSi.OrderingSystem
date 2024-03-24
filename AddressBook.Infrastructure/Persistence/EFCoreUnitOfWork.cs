@@ -1,4 +1,5 @@
 ﻿using AddressBook.Contracts.Persistence;
+using Commons.Contracts.Persistence;
 
 namespace AddressBook.Infrastructure.Persistence
 {

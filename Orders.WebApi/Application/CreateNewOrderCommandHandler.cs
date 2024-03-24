@@ -2,6 +2,7 @@
 using Orders.Contracts.Domain;
 using Orders.Contracts.Persistence;
 using Commons.WebApi.Application;
+using Commons.Contracts.Persistence;
 
 namespace Orders.WebApi.Application
 {

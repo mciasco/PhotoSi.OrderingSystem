@@ -1,4 +1,5 @@
 ﻿using Orders.Contracts.Persistence;
+using Commons.Contracts.Persistence;
 
 namespace Orders.Infrastructure.Persistence
 {

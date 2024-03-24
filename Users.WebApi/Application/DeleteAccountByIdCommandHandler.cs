@@ -2,7 +2,7 @@
 using FluentValidation;
 using Users.Contracts.Clients;
 using Users.Contracts.Persistence;
-using Users.WebApi.Application;
+using Commons.Contracts.Persistence;
 
 namespace Products.WebApi.Application
 {

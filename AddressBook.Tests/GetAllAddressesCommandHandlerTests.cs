@@ -2,6 +2,7 @@ using AddressBook.Contracts.Domain;
 using AddressBook.Contracts.Persistence;
 using AddressBook.WebApi.Application;
 using Moq;
+using Commons.Contracts.Persistence;
 
 namespace AddressBook.Tests
 {

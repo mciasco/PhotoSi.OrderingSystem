@@ -2,6 +2,7 @@
 using FluentValidation;
 using Users.Contracts.Domain;
 using Users.Contracts.Persistence;
+using Commons.Contracts.Persistence;
 
 namespace Users.WebApi.Application
 {

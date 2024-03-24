@@ -3,6 +3,7 @@ using Products.Contracts.Persistence;
 using Products.Infrastructure.Persistence;
 using Products.WebApi.Application;
 using Products.WebApi.Middlewares;
+using Commons.Contracts.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 

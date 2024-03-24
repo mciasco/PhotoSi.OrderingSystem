@@ -9,6 +9,7 @@ using Users.Infrastructure.Persistence;
 using Users.WebApi.Application;
 using Users.WebApi.Configuration;
 using Users.WebApi.Middlewares;
+using Commons.Contracts.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 

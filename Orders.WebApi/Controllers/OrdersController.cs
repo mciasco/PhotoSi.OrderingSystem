@@ -37,6 +37,17 @@ namespace Orders.WebApi.Controllers
                 return Ok(orderFound.ToApiDto());
         }
 
+
+        [HttpGet("accounts/{accountId}", Name = "GetOrdersByAccount")]
+        public async Task<ActionResult<OrderApiDto>> GetOrdersByAccount(
+            [FromRoute] string accountId,
+            [FromServices] GetAllOrdersByAccountCommandHandler commandHandler)
+        {
+            var ordersFound = await commandHandler.Execute(accountId).ConfigureAwait(false);
+            return Ok(ordersFound.Select(o => o.ToApiDto()));
+        }
+
+
         [HttpPost(Name = "CreateNewOrder")]
         public async Task<ActionResult<OrderApiDto>> CreateNewOrder(
             [FromBody] CreateNewOrderApiDto createNewOrderDto,

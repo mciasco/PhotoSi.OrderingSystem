@@ -7,5 +7,6 @@ namespace Orders.Contracts.Persistence
         Task<IEnumerable<Order>> GetAllOrders();
         Task<Order> GetOrderById(string orderId);
         Task AddOrder(Order order);
+        Task<IEnumerable<Order>> GetAllOrdersByAccountId(string input);
     }
 }

@@ -26,6 +26,13 @@ namespace Orders.Infrastructure.Persistence
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Order>> GetAllOrdersByAccountId(string input)
+        {
+            return await _dbContext.Orders
+                .Include(o => o.OrderedProducts)
+                .Where(o => o.CustomerAccountId == input).ToArrayAsync();
+        }
+
         public async Task<Order> GetOrderById(string orderId)
         {
             return await _dbContext

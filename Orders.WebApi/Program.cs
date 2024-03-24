@@ -30,6 +30,7 @@ builder.Services.AddScoped<IOrdersRepository, EFCoreOrdersRepository>();
 builder.Services.AddScoped<GetAllOrdersCommandHandler>();
 builder.Services.AddScoped<GetOrderByIdCommandHandler>();
 builder.Services.AddScoped<CreateNewOrderCommandHandler>();
+builder.Services.AddScoped<GetAllOrdersByAccountCommandHandler>();
 
 
 // configuration

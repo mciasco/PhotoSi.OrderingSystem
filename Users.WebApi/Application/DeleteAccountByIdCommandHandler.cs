@@ -24,7 +24,7 @@ namespace Products.WebApi.Application
         {
             var accountToDelete = await _accountsRepository.GetAccountById(input);
             if (accountToDelete is null)
-                throw new ArgumentException($"Nessun utente trovato con id {input}");
+                throw new ArgumentException($"No user account found by id {input}");
 
             var deleteAddressesSuccess = await _addressBookServiceClient.DeleteAllAddressByAccount(input);
             if (deleteAddressesSuccess)

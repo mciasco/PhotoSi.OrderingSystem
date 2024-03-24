@@ -28,7 +28,7 @@ namespace Users.WebApi.Application
         {
             var passwordHash = await _accountPasswordHasher.HashPassword(input.Password);
             if (string.IsNullOrEmpty(passwordHash))
-                throw new Exception("Errore nella creazione del hash della password");
+                throw new Exception("Hashing password error");
 
             var newAccount = Account.Create(
                 input.Name,
@@ -40,7 +40,7 @@ namespace Users.WebApi.Application
             var addedEntityNum = await _unitOfWork.SaveChangesAsync();
 
             if (addedEntityNum != 1)
-                throw new Exception("Errore nel salvataggio utente");
+                throw new Exception("Error saving account to db");
             
 
             var addAddressDto = new AddAddressClientDto()
@@ -62,7 +62,7 @@ namespace Users.WebApi.Application
                 // rollback account creato
                 await _accountsRepository.DeleteAccount(newAccount);
                 await _unitOfWork.SaveChangesAsync();
-                throw new Exception("Errore nella registrazione di un nuovo utente. Impossibile registrare l'indirizzo di spedizione principale");
+                throw new Exception("Error registering new account. Cannot add main shipping address");
             }
 
             return newAccount;

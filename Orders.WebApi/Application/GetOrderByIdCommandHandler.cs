@@ -17,7 +17,7 @@ namespace Orders.WebApi.Application
         public override async Task<Order> Execute(string input)
         {
             if (string.IsNullOrEmpty(input))
-                throw new ArgumentException("Id ordine nullo. Impossibile recuperare l'ordine");
+                throw new ArgumentException("Cannot find order by null id");
 
             return await _ordersRepository.GetOrderById(input);
         }

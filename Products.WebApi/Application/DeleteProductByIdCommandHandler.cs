@@ -17,7 +17,7 @@ namespace Products.WebApi.Application
         {
             var productToDelete = await _productsRepository.GetProductById(input);
             if (productToDelete is null)
-                throw new ArgumentOutOfRangeException($"Nessun prodotto trovato con id '{input}'");
+                throw new ArgumentOutOfRangeException($"No product found by id '{input}'");
 
             await _productsRepository.DeleteProduct(productToDelete);
             return await _unitOfWork.SaveChangesAsync() == 1;

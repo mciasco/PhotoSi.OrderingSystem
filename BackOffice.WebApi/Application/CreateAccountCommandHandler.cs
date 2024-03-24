@@ -33,7 +33,7 @@ namespace BackOffice.WebApi.Application
 
             var accountDto = await _usersServiceClient.RegisterNewAccount(registerNewAccountClientDto);
             if (accountDto is null)
-                throw new Exception("Errore durante la creazione di un nuovo utente");
+                throw new Exception("Error while creating a new account");
 
             return accountDto;
         }

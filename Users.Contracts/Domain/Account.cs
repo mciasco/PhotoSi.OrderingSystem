@@ -37,7 +37,7 @@ namespace Users.Contracts.Domain
             string passwordHash)
         {
             if (!IsValidEmail(registrationEmail))
-                throw new ArgumentException("Email di registrazione non valida");
+                throw new ArgumentException("Invalid registration email");
 
             return new Account()
             {

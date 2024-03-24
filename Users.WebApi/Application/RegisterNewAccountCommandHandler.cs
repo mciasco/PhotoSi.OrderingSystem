@@ -13,12 +13,12 @@ namespace Users.WebApi.Application
         private readonly IUnitOfWork _unitOfWork;
 
         public RegisterNewAccountCommandHandler(
-            IAccountsRepository usersRepository,
+            IAccountsRepository accountsRepository,
             IAddressBookServiceClient addressBookServiceClient,
             IAccountPasswordHasher accountPasswordHasher,
             IUnitOfWork unitOfWork)
         {
-            this._accountsRepository = usersRepository;
+            this._accountsRepository = accountsRepository;
             this._addressBookServiceClient = addressBookServiceClient;
             this._accountPasswordHasher = accountPasswordHasher;
             this._unitOfWork = unitOfWork;
@@ -27,15 +27,21 @@ namespace Users.WebApi.Application
         public override async Task<Account> Execute(RegisterNewAccountCommandInput input)
         {
             var passwordHash = await _accountPasswordHasher.HashPassword(input.Password);
+            if (string.IsNullOrEmpty(passwordHash))
+                throw new Exception("Errore nella creazione del hash della password");
+
             var newAccount = Account.Create(
                 input.Name,
                 input.Surname,
                 input.RegistrationEmail,
                 input.Username,
                 passwordHash);
-
             await _accountsRepository.AddAccount(newAccount);
-            await _unitOfWork.SaveChangesAsync();
+            var addedEntityNum = await _unitOfWork.SaveChangesAsync();
+
+            if (addedEntityNum != 1)
+                throw new Exception("Errore nel salvataggio utente");
+            
 
             var addAddressDto = new AddAddressClientDto()
             {

@@ -12,6 +12,23 @@ namespace Users.Contracts.Domain
         {
         }
 
+        private static bool IsValidEmail(string email)
+        {
+            if(string.IsNullOrEmpty(email))
+                return false;
+
+            var trimmedEmail = email.Trim();
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static Account Create(
             string name,
             string surname,
@@ -19,6 +36,9 @@ namespace Users.Contracts.Domain
             string username,
             string passwordHash)
         {
+            if (!IsValidEmail(registrationEmail))
+                throw new ArgumentException("Email di registrazione non valida");
+
             return new Account()
             {
                 AccountId = Guid.NewGuid().ToString(),

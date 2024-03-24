@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Users.Contracts.Clients;
 using Users.Contracts.Domain;
 using Users.Contracts.Persistence;
 
 namespace Users.WebApi.Application
 {
-    public class RegisterNewAccountCommandHandler : BaseCommandHandlerWithInputWithOutput<RegisterNewAccountCommandInput, Account>
+    public class RegisterNewAccountCommandHandler : BaseCommandHandlerWithInputWithOutput<RegisterNewAccountCommandInput, Account, RegisterNewAccountCommandInputValidator>
     {
         private readonly IAccountsRepository _accountsRepository;
         private readonly IAddressBookServiceClient _addressBookServiceClient;
@@ -16,7 +17,8 @@ namespace Users.WebApi.Application
             IAccountsRepository accountsRepository,
             IAddressBookServiceClient addressBookServiceClient,
             IAccountPasswordHasher accountPasswordHasher,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            RegisterNewAccountCommandInputValidator validator) : base(validator)
         {
             this._accountsRepository = accountsRepository;
             this._addressBookServiceClient = addressBookServiceClient;
@@ -24,7 +26,7 @@ namespace Users.WebApi.Application
             this._unitOfWork = unitOfWork;
         }
 
-        public override async Task<Account> Execute(RegisterNewAccountCommandInput input)
+        protected override async Task<Account> OnExecute(RegisterNewAccountCommandInput input)
         {
             var passwordHash = await _accountPasswordHasher.HashPassword(input.Password);
             if (string.IsNullOrEmpty(passwordHash))
@@ -68,6 +70,36 @@ namespace Users.WebApi.Application
             return newAccount;
         }
     }
+
+    public class RegisterNewAccountCommandInputValidator : AbstractValidator<RegisterNewAccountCommandInput>
+    {
+        public RegisterNewAccountCommandInputValidator()
+        {
+            RuleFor(i => i.Name).NotEmpty().WithMessage("Cannot register account with null name");
+            RuleFor(i => i.Surname).NotEmpty().WithMessage("Cannot register account with null surname");
+            RuleFor(i => i.RegistrationEmail).NotEmpty().WithMessage("Cannot register account with null registration email");
+            RuleFor(i => i.Username).NotEmpty().WithMessage("Cannot register account with null username");
+            RuleFor(i => i.Password).NotEmpty().WithMessage("Cannot register account with null password");
+            RuleFor(i => i.Password).MinimumLength(6).WithMessage("Account password must be at least 6 chars");
+            RuleFor(i => i.MainShippingAddress).NotNull()
+                .SetValidator(new RegisterNewAccountMainShippingAddressCommandInputValidator());
+        }
+    }
+
+    public class RegisterNewAccountMainShippingAddressCommandInputValidator : AbstractValidator<RegisterNewAccountMainShippingAddressCommandInput>
+    {
+        public RegisterNewAccountMainShippingAddressCommandInputValidator()
+        {
+            RuleFor(i => i.AddressName).NotEmpty().WithMessage("Address must have a non empty name");
+            RuleFor(i => i.Country).NotEmpty().WithMessage("Address must have a non empty country");
+            RuleFor(i => i.StateProvince).NotEmpty().WithMessage("Address must have a non empty state or province");
+            RuleFor(i => i.City).NotEmpty().WithMessage("Address must have a non empty city");
+            RuleFor(i => i.PostalCode).NotEmpty().WithMessage("Address must have a non empty postal code");
+            RuleFor(i => i.StreetName).NotEmpty().WithMessage("Address must have a non empty street name");
+            RuleFor(i => i.StreetNumber).NotEmpty().WithMessage("Address must have a non empty street number");
+        }
+    }
+
 
     public class RegisterNewAccountCommandInput
     {

@@ -28,7 +28,8 @@ namespace Users.WebApi.Controllers
             [FromRoute] string accountId,
             [FromServices] GetAccountByIdCommandHandler commandHandler)
         {
-            var user = await commandHandler.Execute(accountId);
+            var cmdInput = new GetAccountByIdCommandInput() { AccountId = accountId };
+            var user = await commandHandler.Execute(cmdInput);
             return user is null
                 ? NotFound($"No account found with id {accountId}")
                 : Ok(user.ToApiDto());
@@ -39,7 +40,8 @@ namespace Users.WebApi.Controllers
             [FromRoute] string username,
             [FromServices] GetAccountsByUsernameCommandHandler commandHandler)
         {
-            var users = await commandHandler.Execute(username);
+            var cmdInput = new GetAccountsByUsernameCommandInput() { Username = username };
+            var users = await commandHandler.Execute(cmdInput);
             return users is null || !users.Any()
                 ? NotFound($"No accounts found with username {username}")
                 : Ok(users.Select(u => u.ToApiDto()));
@@ -62,7 +64,8 @@ namespace Users.WebApi.Controllers
             [FromRoute] string accountId,
             [FromServices] DeleteAccountByIdCommandHandler commandHandler)
         {
-            var deleted = await commandHandler.Execute(accountId);
+            var cmdInput = new DeleteAccountByIdCommandInput() { AccountId = accountId };
+            var deleted = await commandHandler.Execute(cmdInput);
             return Ok(deleted);
         }
     }

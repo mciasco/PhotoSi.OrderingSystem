@@ -45,8 +45,20 @@ namespace Users.Tests
             _unitOfWorkMock = new Mock<IUnitOfWork>();
 
             _handler = new RegisterNewAccountCommandHandler(
-                _accountsRepositoryMock.Object, _addressBookServiceClientMock.Object, _pwdHasherMock.Object, _unitOfWorkMock.Object);
+                _accountsRepositoryMock.Object, _addressBookServiceClientMock.Object, _pwdHasherMock.Object, _unitOfWorkMock.Object,
+                new RegisterNewAccountCommandInputValidator());
         }
+
+        [Fact]
+        public async Task HandlerThrowsExceptionWhenInputIsInvalid()
+        {
+            var commandInput = CreateCommandInput();
+            commandInput.Name = "";
+
+            var argExp = await Assert.ThrowsAsync<ArgumentException>(async () => await _handler.Execute(commandInput));
+            Assert.NotNull(argExp);
+        }
+
 
         [Fact]
         public async Task HandlerThrowsExceptionWhenPasswordHashIsStringEmpty()

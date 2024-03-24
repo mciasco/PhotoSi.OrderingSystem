@@ -35,6 +35,11 @@ builder.Services.AddScoped<GetAccountsByUsernameCommandHandler>();
 builder.Services.AddScoped<GetAllAccountsCommandHandler>();
 builder.Services.AddScoped<RegisterNewAccountCommandHandler>();
 
+// command input validators
+builder.Services.AddScoped<DeleteAccountByIdCommandInputValidator>();
+builder.Services.AddScoped<GetAccountByIdCommandInputValidator>();
+builder.Services.AddScoped<RegisterNewAccountCommandInputValidator>();
+builder.Services.AddScoped<GetAccountsByUsernameCommandInputValidator>();
 
 
 // configuration

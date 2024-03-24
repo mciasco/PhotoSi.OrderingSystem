@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Commons.WebApi.Application;
+using FluentValidation;
 using Users.Contracts.Domain;
 using Users.Contracts.Persistence;
 

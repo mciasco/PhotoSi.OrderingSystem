@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Users.WebApi.Application
+namespace Commons.WebApi.Application
 {
     public abstract class BaseCommandHandlerNoInputNoOutput
     {

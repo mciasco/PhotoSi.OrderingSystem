@@ -1,4 +1,5 @@
 ﻿using AddressBook.Contracts.Persistence;
+using Commons.WebApi.Application;
 
 namespace AddressBook.WebApi.Application
 {

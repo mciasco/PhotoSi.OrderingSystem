@@ -1,5 +1,6 @@
 ﻿using Orders.Contracts.Domain;
 using Orders.Contracts.Persistence;
+using Commons.WebApi.Application;
 
 namespace Orders.WebApi.Application
 {

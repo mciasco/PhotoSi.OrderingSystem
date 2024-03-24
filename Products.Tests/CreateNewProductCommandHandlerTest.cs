@@ -3,7 +3,7 @@ using Products.Contracts.Domain;
 using Products.Contracts.Persistence;
 using Products.WebApi.Application;
 
-namespace Orders.Tests
+namespace Products.Tests
 {
     public class CreateNewProductCommandHandlerTest
     {

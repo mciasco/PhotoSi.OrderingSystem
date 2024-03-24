@@ -1,4 +1,6 @@
 ﻿using BackOffice.Contracts.Clients;
+using Commons.WebApi.Application;
+using Commons.WebApi.Application;
 
 namespace BackOffice.WebApi.Application
 {

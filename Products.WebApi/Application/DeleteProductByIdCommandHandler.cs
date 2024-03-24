@@ -1,4 +1,5 @@
 ﻿using Products.Contracts.Persistence;
+using Commons.WebApi.Application;
 
 namespace Products.WebApi.Application
 {

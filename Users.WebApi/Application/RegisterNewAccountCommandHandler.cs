@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Users.Contracts.Clients;
 using Users.Contracts.Domain;
 using Users.Contracts.Persistence;
